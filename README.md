@@ -6,12 +6,12 @@ This short course provides a hands-on introduction to modern techniques for unce
 
 ## References
 
-1. "Classification with Valid and Adaptive Coverage", Yaniv Romano, Matteo Sesia, Emmanuel J. Candès. NeurIPS (2020).
-2. "Training Uncertainty-Aware Classifiers with Conformalized Deep Learning", Bat-Sheva Einbinder, Yaniv Romano, Matteo Sesia, Yanfei Zhou. NeurIPS (2022).
-3. "Conformal inference is (almost) free for neural networks trained with early stopping", Ziyi Liang, Yanfei Zhou, Matteo Sesia. arXiv preprint (2023).
-4. "Conformalized Quantile Regression", Yaniv Romano, Evan Patterson, Emmanuel J. Candès. NeurIPS (2019).
-5. "A comparison of some conformal quantile regression methods", Matteo Sesia, Emmanuel J. Candès. Stat (2020).
-6. "Conformal Prediction using Conditional Histograms", Matteo Sesia, Yaniv Romano. NeurIPS (2021).
+1. "Classification with Valid and Adaptive Coverage", Y. Romano, M. Sesia, E. Candès. NeurIPS (2020).
+2. "Training Uncertainty-Aware Classifiers with Conformalized Deep Learning", B. Einbinder, Y. Romano, M. Sesia, Y. Zhou. NeurIPS (2022).
+3. "Conformal inference is (almost) free for neural networks trained with early stopping", Z. Liang, Y. Zhou, M. Sesia. ICML (2023, to appear).
+4. "Conformalized Quantile Regression", Y. Romano, E. Patterson, E. Candès. NeurIPS (2019).
+5. "A comparison of some conformal quantile regression methods", M. Sesia, E. Candès. Stat (2020).
+6. "Conformal Prediction using Conditional Histograms", M. Sesia, Y. Romano. NeurIPS (2021).
 
 ## Prerequisites:
 
