@@ -30,7 +30,9 @@ The course also covers advanced topics of practical relevance, including techniq
 The computer sessions of this course will utilize Python, PyTorch, and Jupyter notebooks. Students are expected to bring their laptops and have pre-installed Python (version 3.7+), PyTorch, and Jupyter prior to the beginning of the course.
 For new (and experienced) users, it is highly recommended to install Anaconda. Anaconda can conveniently install Python, PyTorch, the Jupyter Notebook, and other packages that will be utilized in this course.
 
-Installation instructions: https://docs.jupyter.org/en/latest/install/notebook-classic.html
+Jupyter installation instructions: https://docs.jupyter.org/en/latest/install/notebook-classic.html
+
+PyTorch installation via Anaconda: https://pytorch.org/get-started/locally/
 
 Anaconda download: https://www.anaconda.com/download 
 
