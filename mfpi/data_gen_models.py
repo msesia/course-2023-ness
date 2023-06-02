@@ -13,15 +13,15 @@ class Model_Reg1:
 
     def sample_Y(self, X):
         x = X[:,0]
-        epsilon = self.sigma * np.random.randn(x.shape[0]) 
-        Y =  x + epsilon        
+        epsilon = self.sigma * np.random.randn(x.shape[0])
+        Y =  x + epsilon
         return Y.astype(np.float32).flatten()
 
     def sample(self, n):
         X = self.sample_X(n)
         Y = self.sample_Y(X)
         return X, Y
-    
+
     def oracle_predict(self, X, alpha):
         x = X[:,0]
         n = len(x)
@@ -44,15 +44,15 @@ class Model_Reg2:
 
     def sample_Y(self, X):
         x = X[:,0]
-        epsilon = self.sigma * (x**2) * np.random.randn(x.shape[0]) 
-        Y =  x + epsilon        
+        epsilon = self.sigma * (x**2) * np.random.randn(x.shape[0])
+        Y =  x + epsilon
         return Y.astype(np.float32).flatten()
 
     def sample(self, n):
         X = self.sample_X(n)
         Y = self.sample_Y(X)
         return X, Y
-    
+
     def oracle_predict(self, X, alpha):
         x = X[:,0]
         n = len(x)
@@ -76,14 +76,14 @@ class Model_Reg3:
     def sample_Y(self, X):
         x = X[:,0]
         epsilon = self.sigma * np.random.standard_t(df=self.df, size=x.shape[0])
-        Y =  x + epsilon        
+        Y =  x + epsilon
         return Y.astype(np.float32).flatten()
 
     def sample(self, n):
         X = self.sample_X(n)
         Y = self.sample_Y(X)
         return X, Y
-    
+
     def oracle_predict(self, X, alpha):
         x = X[:,0]
         n = len(x)
@@ -104,15 +104,15 @@ class Model_Reg4:
 
     def sample_Y(self, X):
         x = X[:,0]
-        epsilon = ((1.0-self.a) + 10*self.a*x**2) * np.random.randn(x.shape[0]) 
-        Y =  1 * np.sin(4 * np.pi * x) + 0.25 * epsilon        
+        epsilon = ((1.0-self.a) + 10*self.a*x**2) * np.random.randn(x.shape[0])
+        Y =  1 * np.sin(4 * np.pi * x) + 0.25 * epsilon
         return Y.astype(np.float32).flatten()
 
     def sample(self, n):
         X = self.sample_X(n)
         Y = self.sample_Y(X)
         return X, Y
-    
+
     def oracle_predict(self, X, alpha):
         x = X[:,0]
         n = len(x)
@@ -121,7 +121,7 @@ class Model_Reg4:
         lower = norm.ppf(alpha/2, loc=mu, scale=sigma)
         upper = norm.ppf(1.0-alpha/2, loc=mu, scale=sigma)
         return lower, upper
-    
+
 class Model_Reg5:
     def __init__(self, x_shift=0, a=0):
         self.x_shift = x_shift
@@ -134,15 +134,15 @@ class Model_Reg5:
 
     def sample_Y(self, X):
         x = X[:,0]
-        epsilon = ((1.0-self.a) + 10*self.a*x**2) * np.random.randn(x.shape[0]) 
-        Y =  1 * np.sin(4 * np.pi * x) + 0.25 * epsilon        
+        epsilon = ((1.0-self.a) + 10*self.a*x**2) * np.random.randn(x.shape[0])
+        Y =  1 * np.sin(4 * np.pi * x) + 0.25 * epsilon
         return Y.astype(np.float32).flatten()
 
     def sample(self, n):
         X = self.sample_X(n)
         Y = self.sample_Y(X)
         return X, Y
-    
+
     def oracle_predict(self, X, alpha):
         x = X[:,0]
         n = len(x)
@@ -166,7 +166,7 @@ class Model_Class1:
         X[0:int(n*factor),0] = 1
         X[int(n*factor):,0] = -8
         return X.astype(np.float32)
-    
+
     def compute_prob(self, X):
         f = np.matmul(X,self.beta_Z)
         prob = np.exp(f)
@@ -185,7 +185,7 @@ class Model_Class2:
     def __init__(self, K, p, magnitude=None):
         self.K = K
         self.p = p
-        
+
     def sample_X(self, n):
         X = np.random.normal(0, 1, (n,self.p))
         X[:,0] = np.random.choice([-1,1], size=n, replace=True, p=[1/self.K, (self.K-1)/self.K])
@@ -193,7 +193,7 @@ class Model_Class2:
         X[:,2] = np.random.choice([-1,1], size=n, replace=True, p=[1/2, 1/2])
         X[:,3] = np.random.choice(self.K, n, replace=True)
         return X.astype(np.float32)
-        
+
     def compute_prob(self, X):
         prob_y = np.zeros((X.shape[0], self.K))
         right_0 = X[:,0] > 0
@@ -217,7 +217,7 @@ class Model_Class2:
         for k in range(self.K):
             prob_y[leaf_3[X3==k],:] = (1-0.9)/(self.K-1.0)
             prob_y[leaf_3[X3==k],k] = 0.9
-        # Standardize probabilities for each sample        
+        # Standardize probabilities for each sample
         prob_y = prob_y / prob_y.sum(axis=1)[:,None]
         return prob_y
 

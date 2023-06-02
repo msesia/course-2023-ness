@@ -30,9 +30,8 @@ class LinearQR:
 class RFQR:
     def __init__(self, alpha=0.1, n_estimators=100, min_samples_split=10):
         self.alpha = alpha
-        self.qr = RandomForestQuantileRegressor(min_samples_split=min_samples_split, min_samples_leaf=5, 
+        self.qr = RandomForestQuantileRegressor(min_samples_split=min_samples_split, min_samples_leaf=5,
                                                 n_estimators=n_estimators)
-        self.qr_upp = QuantileRegressor(quantile=1-alpha/2, alpha=0, solver='highs')
 
     def fit(self, X, Y):
         self.qr.fit(X, Y)

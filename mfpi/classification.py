@@ -10,8 +10,8 @@ class ProbabilityAccumulator:
         for i in range(self.n):
             self.ranks[i, self.order[i]] = np.arange(len(self.order[i]))
         self.prob_sort = -np.sort(-prob, axis=1)
-        self.Z = np.round(self.prob_sort.cumsum(axis=1),9)        
-        
+        self.Z = np.round(self.prob_sort.cumsum(axis=1),9)
+
     def predict_sets(self, alpha, randomize=False, epsilon=None):
         if alpha>0:
             L = np.argmax(self.Z >= 1.0-alpha, axis=1).flatten()
@@ -43,7 +43,7 @@ class ProbabilityAccumulator:
         alpha_max = np.minimum(alpha_max, 1)
         tau_min = 1-alpha_max
         return tau_min
-    
+
 def wsc(X, y, S, delta=0.1, M=1000, verbose=False):
 
     def wsc_v(X, y, S, delta, v):
@@ -87,7 +87,7 @@ def wsc(X, y, S, delta=0.1, M=1000, verbose=False):
     else:
         for m in range(M):
             wsc_list[m], a_list[m], b_list[m] = wsc_v(X, y, S, delta, V[m])
-        
+
     idx_star = np.argmin(np.array(wsc_list))
     a_star = a_list[idx_star]
     b_star = b_list[idx_star]
